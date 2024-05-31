@@ -79,7 +79,7 @@ export const getUserProfile = async (req, res: Response) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-    const { password, ...userWithoutPassword } = user;
+    const { password, ...userWithoutPassword } = user; //eslint-disable-line
 
     res.status(200).json(userWithoutPassword);
   } catch (error) {

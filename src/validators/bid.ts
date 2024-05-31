@@ -12,7 +12,7 @@ export const BaseBidSchema = z.object({
 });
 
 // Export the Bid schema with circular references
-export const BidSchema: z.ZodSchema<any> = BaseBidSchema.extend({
+export const BidSchema: z.ZodSchema = BaseBidSchema.extend({
   item: z.lazy(() => ItemSchema),
   user: z.lazy(() => UserSchema),
 });

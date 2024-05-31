@@ -21,7 +21,7 @@ export const LoginUserSchema = BaseUserSchema.pick({
 });
 
 // Export the User schema without circular references
-export const UserSchema: z.ZodSchema<any> = BaseUserSchema.extend({
+export const UserSchema: z.ZodSchema = BaseUserSchema.extend({
   items: z.array(z.lazy(() => ItemSchema)),
   bids: z.array(z.lazy(() => BidSchema)),
   notifications: z.array(z.lazy(() => NotificationSchema)),

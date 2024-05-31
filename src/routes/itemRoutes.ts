@@ -16,7 +16,7 @@ itemsRouter.post("/items", upload.single("image"), createItem);
 itemsRouter.put("/items/:id", upload.single("image"), updateItem);
 itemsRouter.delete("/items/:id", deleteItem);
 
-itemsRouter.use((err, req, res, next) => {
+itemsRouter.use((err, res) => {
   console.log(err);
   res.json({ message: "Item Router Handler Error" });
 });

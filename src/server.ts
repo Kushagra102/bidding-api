@@ -32,15 +32,9 @@ app.use("/api", itemsRouter);
 app.use("/api", bidRouter);
 app.use("/api", notificationRouter);
 
-app.use((err: any, req, res, next) => {
-  if (err.type === "auth") {
-    res.status(401).json({ message: "Unauthorized" });
-  } else if (err.type === "input") {
-    res.status(400).json({ message: "Bad Request or Invalid Input" });
-  } else {
+app.use((err, res) => {
     console.log(err);
-    res.status(500).json({ error: err.message });
-  }
+    res.status(500).json({ error: err });
 });
 
 export default app;

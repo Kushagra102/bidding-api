@@ -123,7 +123,7 @@ export const createBidOnItemWithOutbidNotification = async (
         },
       });
 
-      let usersNotify = await prisma.bid.findMany({
+      const usersNotify = await prisma.bid.findMany({
         where: { itemId: itemId, bid_amount: { lt: newBid.bid_amount } },
         select: { userId: true, bid_amount: true },
         distinct: ["userId"],

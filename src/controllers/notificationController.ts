@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Response } from "express";
 import prisma from "../utils/prismaClient";
 
 export const getNotifications = async (req, res: Response) => {

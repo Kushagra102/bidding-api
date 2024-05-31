@@ -5,7 +5,7 @@ const userRouter = express.Router();
 
 userRouter.get("/profile", getUserProfile);
 
-userRouter.use((err, req, res, next) => {
+userRouter.use((err, res) => {
   console.log(err);
   res.json({ message: "User Router Handler Error" });
 });

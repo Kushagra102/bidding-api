@@ -11,7 +11,7 @@ export const BaseNotificationSchema = z.object({
 });
 
 // Export the Notification schema with circular references
-export const NotificationSchema: z.ZodSchema<any> =
+export const NotificationSchema: z.ZodSchema =
   BaseNotificationSchema.extend({
     user: z.lazy(() => UserSchema),
   });

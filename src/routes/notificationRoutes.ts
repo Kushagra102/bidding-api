@@ -9,7 +9,7 @@ const notificationRouter = express.Router();
 notificationRouter.get("/notifications", getNotifications);
 notificationRouter.post("/notifications/mark-read", markNotificationsAsRead);
 
-notificationRouter.use((err, req, res, next) => {
+notificationRouter.use((err, res) => {
   console.log(err);
   res.json({ message: "Notification Router Handler Error" });
 });
