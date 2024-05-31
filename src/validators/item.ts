@@ -2,7 +2,6 @@ import { z } from "zod";
 import { UserSchema } from "./user";
 import { BidSchema } from "./bid";
 
-// Define the Item schema without circular references
 export const BaseItemSchema = z.object({
   id: z.number().int().positive(),
   name: z.string(),
@@ -15,11 +14,9 @@ export const BaseItemSchema = z.object({
   userId: z.number().int().positive(),
 });
 
-// Export the Item schema with circular references
 export const ItemSchema: z.ZodSchema = BaseItemSchema.extend({
   user: z.lazy(() => UserSchema),
   bids: z.array(z.lazy(() => BidSchema)),
 });
 
-// Export the Item type
 export type Item = z.infer<typeof ItemSchema>;

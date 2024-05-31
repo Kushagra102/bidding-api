@@ -16,10 +16,14 @@ import bidRouter from "./routes/bidRoutes";
 import notificationRouter from "./routes/notificationRoutes";
 import xss from "./middlewares/xss";
 import { rateLimiter } from "./middlewares/rateLimiter";
+import path from "path";
+import { errorLoggerMiddleware, loggerMiddleware } from "./services/logging";
+import sfRouter from "./routes/searchAndFilter";
 
 const app = express();
-
+app.use(loggerMiddleware);
 app.use(cors());
+app.use("/static", express.static(path.join(__dirname, "../uploads")));
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -42,6 +46,9 @@ app.use("/api/users", userRouter);
 app.use("/api", itemsRouter);
 app.use("/api", bidRouter);
 app.use("/api", notificationRouter);
+app.use("/api", sfRouter);
+
+app.use(errorLoggerMiddleware);
 
 app.use((err, req, res, next) => {
   console.log(err);
