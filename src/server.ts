@@ -32,9 +32,9 @@ app.use("/api", itemsRouter);
 app.use("/api", bidRouter);
 app.use("/api", notificationRouter);
 
-app.use((err, res) => {
-    console.log(err);
-    res.status(500).json({ error: err });
+app.use((err, req, res, next) => {
+  console.log(err);
+  res.status(500).json({ error: err });
 });
 
 export default app;
