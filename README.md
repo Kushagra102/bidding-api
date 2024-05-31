@@ -21,11 +21,11 @@ The API is deployed on EC2 and can be accessed at: [http://ec2-13-127-202-84.ap-
 3. JWT, RBAC, Rate limiter, XSS, ValidateZOD Middleware
 4. Validation and Error Handling Complete
 5. Image Upload (Multer), Search and Filter, Pagination Complete
-6) Project Structure Organized
-7) Eslint Linter, Logging via Winston, Prettier
-8) Reset Password and Otp Via Nodemailer
-9) Docker for Containerization
-10) Documentation on Postman, Deployment on EC2
+6. Project Structure Organized
+7. Eslint Linter, Logging via Winston, Prettier
+8. Reset Password and Otp Via Nodemailer
+9. Docker for Containerization
+10. Documentation on Postman, Deployment on EC2
 
 ## Steps to Run Locally
 
