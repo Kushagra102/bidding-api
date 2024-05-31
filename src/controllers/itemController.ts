@@ -9,17 +9,39 @@ export const getAllItems = async (req: Request, res: Response) => {
     const skip = (page - 1) * perPage;
 
     const totalCount = await prisma.item.count();
+    const totalPages = Math.ceil(totalCount / perPage);
+
     const items = await prisma.item.findMany({
       take: perPage,
       skip,
     });
 
-    res.status(200).json({ totalCount, items });
+    res.status(200).json({
+      totalItems: totalCount,
+      totalPages,
+      currentPage: page,
+      perPage,
+      items,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error fetching items" });
   }
 };
+
+export const getItemsByUser = async (req, res: Response) => {
+  try {
+    const userId = parseInt(req.user.id);
+    const items = await prisma.item.findMany({
+      where: { userId: userId },
+    });
+
+    res.status(200).json(items);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error fetching items" });
+  }
+}
 
 export const getItemById = async (req: Request, res: Response) => {
   try {
@@ -114,7 +136,9 @@ export const deleteItem = async (req, res: Response) => {
     if (existingItem.userId === req.user.id || req.user.role === "ADMIN") {
       await prisma.item.delete({ where: { id: itemId } });
 
-      return res.status(204).send();
+      return res.status(200).send({
+        message: "Item deleted successfully",
+      });
     }
 
     return res.status(403).json({ message: "Forbidden: Access is denied" });

@@ -4,6 +4,7 @@ import {
   deleteItem,
   getAllItems,
   getItemById,
+  getItemsByUser,
   updateItem,
 } from "../controllers/itemController";
 import { upload } from "../utils/multerClient";
@@ -11,6 +12,7 @@ import { upload } from "../utils/multerClient";
 const itemsRouter = express.Router();
 
 itemsRouter.get("/items", getAllItems);
+itemsRouter.get("/items/user", getItemsByUser);
 itemsRouter.get("/items/:id", getItemById);
 itemsRouter.post("/items", upload.single("image"), createItem);
 itemsRouter.put("/items/:id", upload.single("image"), updateItem);

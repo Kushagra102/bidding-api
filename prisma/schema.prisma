@@ -23,6 +23,8 @@ model User {
   items         Item[]
   bids          Bid[]
   notifications Notification[]
+  otp           String?
+  otp_expiry    DateTime?
 }
 
 enum Role {

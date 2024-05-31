@@ -5,7 +5,7 @@ import { protect } from "./middlewares/authMiddleware";
 import validate from "./middlewares/validateMiddleware";
 import { BaseUserSchema, LoginUserSchema } from "./validators/user";
 import userRouter from "./routes/userRoutes";
-import { loginUser, registerUser } from "./controllers/userController";
+import { loginUser, registerUser, resetUserPassword, verifyOTPAndResetPassword } from "./controllers/userController";
 import itemsRouter from "./routes/itemRoutes";
 import bidRouter from "./routes/bidRoutes";
 import notificationRouter from "./routes/notificationRoutes";
@@ -26,6 +26,8 @@ app.use("/api", protect);
 
 app.post("/users/register", validate(BaseUserSchema), registerUser);
 app.post("/users/login", validate(LoginUserSchema), loginUser);
+app.post("/users/send-otp", resetUserPassword);
+app.post("/users/reset-password", verifyOTPAndResetPassword);
 
 app.use("/api/users", userRouter);
 app.use("/api", itemsRouter);
