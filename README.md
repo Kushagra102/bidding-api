@@ -1,5 +1,13 @@
 # Bidding Platform API
 
+## Table of Contents
+
+- [Documentation](#documentation)
+- [Deployed API](#deployed-api)
+- [Steps to Run Locally](#steps-to-run-locally)
+- [Steps For local building](#steps-for-local-building)
+- [Steps to run via docker](#running-with-docker)
+  
 ## Documentation
 [Postman Documentation](https://documenter.getpostman.com/view/28036992/2sA3QwapCo)
 
