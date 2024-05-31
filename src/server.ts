@@ -5,17 +5,26 @@ import { protect } from "./middlewares/authMiddleware";
 import validate from "./middlewares/validateMiddleware";
 import { BaseUserSchema, LoginUserSchema } from "./validators/user";
 import userRouter from "./routes/userRoutes";
-import { loginUser, registerUser, resetUserPassword, verifyOTPAndResetPassword } from "./controllers/userController";
+import {
+  loginUser,
+  registerUser,
+  resetUserPassword,
+  verifyOTPAndResetPassword,
+} from "./controllers/userController";
 import itemsRouter from "./routes/itemRoutes";
 import bidRouter from "./routes/bidRoutes";
 import notificationRouter from "./routes/notificationRoutes";
+import xss from "./middlewares/xss";
+import { rateLimiter } from "./middlewares/rateLimiter";
 
 const app = express();
 
 app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
+app.use(xss());
+app.use(rateLimiter);
 
 app.get("/", (req: Request, res: Response) => {
   console.log("Hello from Bidding Platform!");
