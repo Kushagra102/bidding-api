@@ -12,9 +12,6 @@
 ## Documentation
 [Postman Documentation](https://documenter.getpostman.com/view/28036992/2sA3QwapCo)
 
-## Deployed API
-The API is deployed on EC2 and can be accessed at: [http://ec2-13-127-202-84.ap-south-1.compute.amazonaws.com:3000/](http://ec2-13-127-202-84.ap-south-1.compute.amazonaws.com:3000/)
-
 ## Completion as per provided docs
 1. All routes/endpoints completed
 2. Real time notification system complete
